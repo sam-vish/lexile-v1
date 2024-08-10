@@ -1,0 +1,6 @@
+langchain
+langchain-community
+streamlit
+langchain-google-genai
+supabase
+langchain-huggingface
