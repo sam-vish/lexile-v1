@@ -44,7 +44,7 @@ def main():
                         st.session_state.current_lexile = user_data['lexile_level']
                         st.session_state.page = 'main'
                         st.success("Login successful!")
-                        st.experimental_rerun()
+                        st.rerun()
                     else:
                         st.error("Invalid student ID or password. Please try again.")
                 else:
