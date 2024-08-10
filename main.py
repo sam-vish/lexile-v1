@@ -167,7 +167,7 @@ def main():
                         st.session_state.old_lexile = old_lexile
                         st.session_state.new_lexile = new_lexile
                         st.session_state.percentage_correct = percentage_correct
-                        st.experimental_rerun()
+                        st.rerun()
 
             if st.session_state.answers_submitted:
                 st.subheader("Test Results")
@@ -186,7 +186,7 @@ def main():
         if st.sidebar.button("Logout"):
             for key in list(st.session_state.keys()):
                 del st.session_state[key]
-            st.experimental_rerun()
+            st.rerun()
 
 if __name__ == "__main__":
     main()
