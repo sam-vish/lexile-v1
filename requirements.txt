@@ -3,5 +3,4 @@ langchain-community
 streamlit
 langchain-google-genai
 supabase
-supabase-py
 langchain-huggingface
