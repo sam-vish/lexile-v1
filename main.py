@@ -4,7 +4,7 @@ import streamlit as st
 from database import verify_user, get_user_data, save_session, update_user_answers_and_factors, get_evaluation_scores, update_user_lexile_level, create_user
 from lexile import adjust_lexile_level, display_lexile_scale, evaluate_answers
 from content_generation import generate_content_and_mcqs
-from config import EVALUATION_FACTORS, TOPICS, DIFFICULTY_LEVELS, DIFFICULTY_TO_LEXILE
+from config import TOPICS, DIFFICULTY_LEVELS, DIFFICULTY_TO_LEXILE
 
 def main():
     st.title("Lexile Evaluation App")
@@ -167,6 +167,7 @@ def main():
                         st.session_state.old_lexile = old_lexile
                         st.session_state.new_lexile = new_lexile
                         st.session_state.percentage_correct = percentage_correct
+                        st.session_state.user_answers = user_answers  # Store user answers in session state
                         st.rerun()
 
             if st.session_state.answers_submitted:
@@ -181,6 +182,24 @@ def main():
                     st.info("Your Lexile Level remains the same. Keep up the good work!")
                 st.write(f"You answered {st.session_state.percentage_correct:.2f}% of the questions correctly.")
                 st.text(display_lexile_scale(st.session_state.new_lexile))
+
+                # Display questions with correct answers
+                st.subheader("Review Your Answers:")
+                for i, (q, user_answer) in enumerate(zip(st.session_state.questions, st.session_state.user_answers), 1):
+                    st.write(f"{i}. {q['text']}")
+                    for j, option in enumerate(q['options']):
+                        option_letter = chr(65 + j)
+                        if option_letter == user_answer:
+                            if user_answer == q['correct_answer']:
+                                st.success(f"{option_letter}. {option} (Your answer - Correct)")
+                            else:
+                                st.error(f"{option_letter}. {option} (Your answer - Incorrect)")
+                        elif option_letter == q['correct_answer']:
+                            st.success(f"{option_letter}. {option} (Correct answer)")
+                        else:
+                            st.write(f"{option_letter}. {option}")
+                    st.write("")  # Add a blank line between questions
+
 
         # Logout button
         if st.sidebar.button("Logout"):
