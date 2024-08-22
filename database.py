@@ -115,3 +115,4 @@ def get_evaluation_scores(student_id):
     except Exception as e:
         print(f"Error getting evaluation scores: {e}")
         return {}
+    
