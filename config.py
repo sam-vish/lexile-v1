@@ -1,7 +1,5 @@
 # config.py
 
-import os
-
 # Evaluation factors for assessing reading skills
 EVALUATION_FACTORS = [    
 "Reading Comprehension", "Vocabulary", "Inference Skills", "Main Idea Identification", "Detail Identification", "Text Structure", "Context Clues", "Summarization", "Analyzing Arguments", "Making Predictions"
@@ -36,6 +34,7 @@ DIFFICULTY_TO_LEXILE = {
     "Hard": (1000, 1600)
 }
 
+# Supabase configuration
 SUPABASE_URL= "https://mfbktreohntpbfnfyjrf.supabase.co"
 SUPABASE_KEY= "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im1mYmt0cmVvaG50cGJmbmZ5anJmIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MjMxMjg3ODMsImV4cCI6MjAzODcwNDc4M30.-A-ruD-tAuWVmQAHVL0fnL7DTLYKh9_Xke0awe4AoZk"
 
