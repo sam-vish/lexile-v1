@@ -11,9 +11,9 @@ def get_initial_lexile(age):
 
 def adjust_lexile_level(current_lexile, percentage_correct):
     if percentage_correct >= 70:
-        return current_lexile + 25
+        return current_lexile + 10
     elif percentage_correct <= 30:
-        return max(0, current_lexile - 25)
+        return max(0, current_lexile - 10)
     return current_lexile
 
 def display_lexile_scale(current_lexile):
